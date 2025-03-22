@@ -1,7 +1,7 @@
 struct Obstacle {
     int x, width, gap;
     int topHeight, bottomHeight;
-    int speed = 5;
+    int speed = 4;
     int direction = 1;
     int moveSpeed = 2;
 
@@ -16,7 +16,7 @@ struct Obstacle {
         bottomTexture = graphics.loadTexture(bottomFile);
         x = startX;
         width = 100;
-        gap = 200;
+        gap = 250;
         resetPosition();
     }
 

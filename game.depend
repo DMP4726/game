@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1742603390 source:d:\ltnc\game\game\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<cstdlib>
+	<ctime>
+	"graphics.h"
+	"defs.h"
+	"game.h"
+	"sprite_animation.h"
+
+1742603390 d:\ltnc\game\game\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+
+1742603390 d:\ltnc\game\game\defs.h
+
+1742603390 d:\ltnc\game\game\game.h
+	<SDL.h>
+	"graphics.h"
+
+1742626031 d:\ltnc\game\game\sprite_animation.h
+
