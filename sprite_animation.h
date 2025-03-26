@@ -1,7 +1,7 @@
 struct Obstacle {
     int x, width, gap;
     int topHeight, bottomHeight;
-    int speed = 4;
+    int speed = 5;
     int direction = 1;
     int moveSpeed = 2;
 
