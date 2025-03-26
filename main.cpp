@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 #include <cstdlib>
 #include <ctime>
 #include "graphics.h"
@@ -15,6 +16,19 @@ int main(int argc, char* argv[]) {
 
     Graphics graphics;
     graphics.init();
+
+    // Khởi tạo âm thanh
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+        cerr << "SDL_mixer Error: " << Mix_GetError() << endl;
+        return -1;
+    }
+
+    Mix_Music* bgMusic = Mix_LoadMUS("wind.wav");
+    if (!bgMusic) {
+        cerr << "Failed to load background music: " << Mix_GetError() << endl;
+        return -1;
+    }
+    Mix_PlayMusic(bgMusic, -1); // Phát lặp vô hạn
 
     ScrollingBackground background;
     background.setTexture(graphics.loadTexture(BACKGROUND_IMG));
@@ -60,7 +74,10 @@ int main(int argc, char* argv[]) {
         SDL_Delay(10);
     }
 
+    // Giải phóng âm thanh
+    Mix_FreeMusic(bgMusic);
+    Mix_CloseAudio();
+
     graphics.quit();
     return 0;
 }
-

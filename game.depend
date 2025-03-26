@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1742603390 source:d:\ltnc\game\game\main.cpp
+1742997661 source:d:\ltnc\game\game\main.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
+	<SDL_mixer.h>
 	<cstdlib>
 	<ctime>
 	"graphics.h"
