@@ -8,7 +8,8 @@
 #include "defs.h"
 #include "game.h"
 #include "sprite_animation.h"
-
+#include <SDL_ttf.h>
+#include <string>
 using namespace std;
 
 int main(int argc, char* argv[]) {
@@ -47,7 +48,22 @@ int main(int argc, char* argv[]) {
     obstacles[1].init(graphics, "pipe2.png", "pipe.png", SCREEN_WIDTH + 300);
     obstacles[2].init(graphics, "pipe2.png", "pipe.png", SCREEN_WIDTH + 600);
 
+    if (TTF_Init() == -1) {
+    cerr << "SDL_ttf Error: " << TTF_GetError() << endl;
+    return -1;
+}
+
+TTF_Font* font = TTF_OpenFont("WowDino-G33vP.ttf", 24);
+if (!font) {
+    cerr << "Failed to load font: " << TTF_GetError() << endl;
+    return -1;
+}
+
     SDL_Event event;
+    int score = 0;
+    int lastScoredPipe = -1;
+SDL_Color white = {255, 255, 255, 255};
+
     bool quit = false;
 
     while (!quit && !gameOver(mouse)) {
@@ -67,10 +83,15 @@ int main(int argc, char* argv[]) {
             if (obstacle.checkCollision(mouse)) {
                 quit = true;
             }
+            if (mouse.x > obstacle.x + obstacle.width) {
+        score++;
+    }
         }
 
         render(mouse, graphics);
-        graphics.presentScene();
+        string scoreText = "Score: " + to_string(score/20);
+graphics.renderText(scoreText.c_str(), 20, 20, white, font);
+graphics.presentScene();
         SDL_Delay(10);
     }
 
@@ -79,5 +100,7 @@ int main(int argc, char* argv[]) {
     Mix_CloseAudio();
 
     graphics.quit();
+    TTF_CloseFont(font);
+TTF_Quit();
     return 0;
 }

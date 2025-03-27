@@ -4,7 +4,8 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "defs.h"
-
+#include <SDL_ttf.h>
+#include <string>
 struct ScrollingBackground {
     SDL_Texture* texture;
     int scrollingOffset = 0;
@@ -47,6 +48,7 @@ struct Graphics {
 
         SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
         SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
     }
 
     SDL_Texture* loadTexture(const char* filename) {
@@ -60,6 +62,14 @@ struct Graphics {
     void presentScene() {
         SDL_RenderPresent(renderer);
     }
+    void renderText(const char* text, int x, int y, SDL_Color color, TTF_Font* font) {
+    SDL_Surface* surface = TTF_RenderText_Solid(font, text, color);
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_Rect dest = {x, y, surface->w, surface->h};
+    SDL_RenderCopy(renderer, texture, NULL, &dest);
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(texture);
+}
 
     void quit() {
         IMG_Quit();
@@ -67,6 +77,7 @@ struct Graphics {
         SDL_DestroyWindow(window);
         SDL_Quit();
     }
+
 };
 
 #endif
