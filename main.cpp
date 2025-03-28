@@ -12,6 +12,66 @@
 #include <string>
 using namespace std;
 
+void showIntroScreen(Graphics& graphics) {
+    SDL_Texture* logo = graphics.loadTexture("logo.png");
+    SDL_Color white = {255, 255, 255, 255};
+    TTF_Font* font = TTF_OpenFont("WowDino-G33vP.ttf", 36);
+
+    bool introRunning = true;
+    SDL_Event event;
+    while (introRunning) {
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) return;
+            if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_SPACE) {
+                introRunning = false;
+            }
+        }
+
+        SDL_RenderClear(graphics.renderer);
+
+
+         SDL_Rect logoRect = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
+        SDL_RenderCopy(graphics.renderer, logo, NULL, &logoRect);
+
+        graphics.renderText("SPARTACUS", SCREEN_WIDTH / 2 - 130, 300, white, font);
+        graphics.renderText("Press Space to Start", SCREEN_WIDTH / 2 - 195, 400, white, font);
+
+        graphics.presentScene();
+    }
+
+    SDL_DestroyTexture(logo);
+    TTF_CloseFont(font);
+}
+void showGameOverScreen(Graphics& graphics, int score) {
+    SDL_Texture* logo2 = graphics.loadTexture("logo2.png");
+    SDL_Color white = {255, 255, 255, 255};
+    TTF_Font* font = TTF_OpenFont("WowDino-G33vP.ttf", 36);
+
+    bool gameOverRunning = true;
+    SDL_Event event;
+    while (gameOverRunning) {
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) return;
+            if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_SPACE) {
+                gameOverRunning = false;
+            }
+        }
+
+        SDL_RenderClear(graphics.renderer);
+        SDL_Rect logoRect = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
+        SDL_RenderCopy(graphics.renderer, logo2, NULL, &logoRect);
+
+        graphics.renderText("Game Over", SCREEN_WIDTH / 2 - 100, 250, white, font);
+        string scoreText2 = "Final Score: " + to_string(score/20);
+        graphics.renderText(scoreText2.c_str(), SCREEN_WIDTH / 2 - 120, 320, white, font);
+        graphics.renderText("Press Space to Exit", SCREEN_WIDTH / 2 - 150, 400, white, font);
+
+        graphics.presentScene();
+    }
+    SDL_DestroyTexture(logo2);
+    TTF_CloseFont(font);
+}
+
 int main(int argc, char* argv[]) {
     srand(time(0));
 
@@ -63,7 +123,7 @@ if (!font) {
     int score = 0;
     int lastScoredPipe = -1;
 SDL_Color white = {255, 255, 255, 255};
-
+showIntroScreen(graphics);
     bool quit = false;
 
     while (!quit && !gameOver(mouse)) {
@@ -94,7 +154,7 @@ graphics.renderText(scoreText.c_str(), 20, 20, white, font);
 graphics.presentScene();
         SDL_Delay(10);
     }
-
+    showGameOverScreen(graphics, score);
     // Giải phóng âm thanh
     Mix_FreeMusic(bgMusic);
     Mix_CloseAudio();
