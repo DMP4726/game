@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1743059329 source:d:\ltnc\game\game\main.cpp
+1743189162 source:d:\ltnc\game\game\main.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -26,5 +26,5 @@
 	<SDL.h>
 	"graphics.h"
 
-1743059329 d:\ltnc\game\game\sprite_animation.h
+1743190053 d:\ltnc\game\game\sprite_animation.h
 
