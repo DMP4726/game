@@ -54,7 +54,15 @@ struct Graphics {
     SDL_Texture* loadTexture(const char* filename) {
         return IMG_LoadTexture(renderer, filename);
     }
+    void renderBackground(const ScrollingBackground& background) {
+    SDL_Rect bg1 = { background.scrollingOffset, 0, background.width, background.height };
+    SDL_Rect bg2 = { background.scrollingOffset + background.width, 0, background.width, background.height };
 
+    SDL_RenderCopy(renderer, background.texture, NULL, &bg1);
+    SDL_RenderCopy(renderer, background.texture, NULL, &bg2);
+
+
+}
     void render(const ScrollingBackground& background) {
         SDL_RenderCopy(renderer, background.texture, NULL, NULL);
     }

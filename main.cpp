@@ -131,8 +131,8 @@ showIntroScreen(graphics);
             if (event.type == SDL_QUIT) quit = true;
         }
 
-        background.scroll(5);
-        graphics.render(background);
+        background.scroll(2);
+        graphics.renderBackground(background);
 
         const Uint8* keyStates = SDL_GetKeyboardState(NULL);
         mouse.handleInput(keyStates);
