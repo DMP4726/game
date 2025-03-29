@@ -158,7 +158,7 @@ graphics.presentScene();
     // Giải phóng âm thanh
     Mix_FreeMusic(bgMusic);
     Mix_CloseAudio();
-
+    SDL_DestroyTexture( background.texture );
     graphics.quit();
     TTF_CloseFont(font);
 TTF_Quit();

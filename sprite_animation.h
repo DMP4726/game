@@ -62,7 +62,7 @@ struct Obstacle {
     }
 
     bool checkCollision(const Mouse& mouse) {
-        return (mouse.x + 80 > x && mouse.x < x + width &&
-                (mouse.y < topHeight || mouse.y + 80 > SCREEN_HEIGHT - bottomHeight));
+        return (mouse.x + 50 > x && mouse.x < x + width &&
+                (mouse.y < topHeight || mouse.y + 50 > SCREEN_HEIGHT - bottomHeight));
     }
 };
