@@ -18,17 +18,17 @@ struct Mouse {
         y += dy;
 
         if (y < 0) y = 0;
-        if (y > SCREEN_HEIGHT - 80) y = SCREEN_HEIGHT - 80;
+        if (y > SCREEN_HEIGHT - 60) y = SCREEN_HEIGHT - 60;
     }
 };
 
 void render(const Mouse& mouse, Graphics& graphics) {
-    SDL_Rect dest = { mouse.x, mouse.y, 80, 80 };
+    SDL_Rect dest = { mouse.x, mouse.y, 60, 60 };
     SDL_RenderCopy(graphics.renderer, mouse.texture, NULL, &dest);
 }
 
 bool gameOver(const Mouse& mouse) {
-    return mouse.y >= SCREEN_HEIGHT - 80;
+    return mouse.y >= SCREEN_HEIGHT - 60;
 }
 
 #endif
