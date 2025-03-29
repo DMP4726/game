@@ -24,7 +24,7 @@ struct Obstacle {
         topHeight = 100 + rand() % 200;
         bottomHeight = SCREEN_HEIGHT - (topHeight + gap);
         isMoving = false;  // Khi reset, ống sẽ đứng yên
-        moveTimer = rand() % 200 + 100;  // Chờ ngẫu nhiên 100-400 frame trước khi bắt đầu zigzag
+        moveTimer = rand() % 150 + 100;  // Chờ ngẫu nhiên 100-400 frame trước khi bắt đầu zigzag
     }
 
     void update() {
