@@ -23,7 +23,7 @@ struct Obstacle {
     void resetPosition() {
         topHeight = 100 + rand() % 200;
         bottomHeight = SCREEN_HEIGHT - (topHeight + gap);
-        isMoving = false;  // Khi reset, ống sẽ đứng yên
+        isMoving = false;
         moveTimer = 0;
     }
 

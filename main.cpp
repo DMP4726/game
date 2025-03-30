@@ -125,19 +125,30 @@ if (!font) {
 SDL_Color white = {255, 255, 255, 255};
 showIntroScreen(graphics);
     bool quit = false;
+    float speedMultiplier = 1.0f;
+Uint32 difficultyTimer = SDL_GetTicks();
 
     while (!quit && !gameOver(mouse)) {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) quit = true;
         }
 
-        background.scroll(2);
+         Uint32 now = SDL_GetTicks();
+    if (now - difficultyTimer >5000) {
+        speedMultiplier += 0.1f;
+        difficultyTimer = now;
+    }
+
+        background.scroll(2 * speedMultiplier);
         graphics.renderBackground(background);
 
         const Uint8* keyStates = SDL_GetKeyboardState(NULL);
+        mouse.dx *= speedMultiplier;
+    mouse.dy *= speedMultiplier;
         mouse.handleInput(keyStates);
 
         for (auto& obstacle : obstacles) {
+            obstacle.speed = 5 * speedMultiplier;
             obstacle.update();
             obstacle.render(graphics);
             if (obstacle.checkCollision(mouse)) {
@@ -155,7 +166,6 @@ graphics.presentScene();
         SDL_Delay(10);
     }
     showGameOverScreen(graphics, score);
-    // Giải phóng âm thanh
     Mix_FreeMusic(bgMusic);
     Mix_CloseAudio();
     SDL_DestroyTexture( background.texture );
