@@ -134,7 +134,7 @@ Uint32 difficultyTimer = SDL_GetTicks();
         }
 
          Uint32 now = SDL_GetTicks();
-    if (now - difficultyTimer >5000) {
+    if (now - difficultyTimer >10000) {
         speedMultiplier += 0.1f;
         difficultyTimer = now;
     }
