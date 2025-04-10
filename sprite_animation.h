@@ -42,8 +42,8 @@ struct Obstacle {
 
             if (topHeight <= 50 || topHeight >= SCREEN_HEIGHT - gap - 50) {
                 direction *= -1;
-                isMoving = false;  // Khi đổi hướng, tạm thời dừng zigzag
-                moveTimer = rand() % 200 + 50;  // Chờ ngẫu nhiên 50-250 frame rồi mới zigzag tiếp
+                isMoving = false;
+                moveTimer = rand() % 200 + 50;
             }
         }
 
