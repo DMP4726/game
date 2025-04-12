@@ -22,7 +22,7 @@ Tốc độ di chuyển tăng dần theo thời gian – hãy tập trung!
 💀 Game Over khi nào?
 Khi chiến binh:
 
-Đụng vào rừu trên hoặc ống dưới
+Đụng vào rừu trên hoặc dưới
 
 Hoặc di chuyển xuống đất (cuối màn hình)
 
