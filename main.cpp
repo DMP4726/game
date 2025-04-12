@@ -33,9 +33,10 @@ void showIntroScreen(Graphics& graphics) {
          SDL_Rect logoRect = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
         SDL_RenderCopy(graphics.renderer, logo, NULL, &logoRect);
 
-        graphics.renderText("SPARTACUS", SCREEN_WIDTH / 2 - 130, 300, white, font);
-        graphics.renderText("Press Space to Start", SCREEN_WIDTH / 2 - 195, 400, white, font);
-
+        graphics.renderText("SPARTACUS", SCREEN_WIDTH / 2 - 130, 200, white, font);
+        graphics.renderText("Press Space to Start", SCREEN_WIDTH / 2 - 195, 300, white, font);
+        graphics.renderText("W/UP ARROW KEY : UP", SCREEN_WIDTH / 2 - 195, 400, white, font);
+        graphics.renderText("S/UP DOWN KEY : DOWN", SCREEN_WIDTH / 2 - 195, 500, white, font);
         graphics.presentScene();
     }
 
