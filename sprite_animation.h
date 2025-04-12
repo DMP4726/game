@@ -23,27 +23,17 @@ struct Obstacle {
     void resetPosition() {
         topHeight = 100 + rand() % 200;
         bottomHeight = SCREEN_HEIGHT - (topHeight + gap);
-        isMoving = false;
         moveTimer = 0;
     }
 
     void update() {
         x -= speed;
-
-        if (moveTimer > 0) {
-            moveTimer--;
-        } else {
-            isMoving = true;
-        }
-
-        if (isMoving) {
+        {
             topHeight += direction * moveSpeed;
             bottomHeight = SCREEN_HEIGHT - (topHeight + gap);
 
             if (topHeight <= 50 || topHeight >= SCREEN_HEIGHT - gap - 50) {
                 direction *= -1;
-                isMoving = false;
-                moveTimer = rand() % 200 + 50;
             }
         }
 
