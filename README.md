@@ -20,14 +20,14 @@ Giữ phím nhẹ nhàng để điều chỉnh độ cao chính xác.
 Tốc độ di chuyển tăng dần theo thời gian – hãy tập trung!
 
 💀 Game Over khi nào?
-Khi chú chuột:
+Khi chiến binh:
 
-Đụng vào ống trên hoặc ống dưới
+Đụng vào rừu trên hoặc ống dưới
 
-Hoặc rơi xuống đất (cuối màn hình)
+Hoặc di chuyển xuống đất (cuối màn hình)
 
 🏆 Tính điểm:
-Mỗi khi bạn vượt qua một ống, điểm sẽ tăng.
+Mỗi khi bạn vượt qua một lưỡi rừu, điểm sẽ tăng.
 
 Điểm được hiển thị ở góc trên bên trái màn hình.
 
